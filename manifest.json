@@ -1,0 +1,27 @@
+
+{
+  "manifest_version": 2,
+  "name": "RCR Website Blocker",
+  "version": "1.0.0",
+  "description": "Blocks unauthorized remote access websites and redirects to RCR.",
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "rcr-blocker@vodkra.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}
