@@ -4,83 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Security Warning From Rossland Computer Repair</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #151515;
-  font-family: Arial, sans-serif;
-  color: white;
-  padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #151515;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
 }
+
 .warning {
-  max-width: 650px;
-  width: 100%;
-  background: #252525;
-  border: 2px solid #e53935;
-  border-radius: 14px;
-  padding: 35px;
-  text-align: center;
-  box-shadow: 0 0 30px #e5393540;
+    max-width: 650px;
+    width: 100%;
+    background: #252525;
+    border: 2px solid #e53935;
+    border-radius: 14px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 0 30px #e5393540;
 }
+
 .symbol {
-  font-size: 65px;
-  color: #ff3838;
+    font-size: 65px;
+    color: #ff3838;
 }
+
 h1 {
-  color: #ff3838;
-  font-size: 27px;
+    color: #ff3838;
+    font-size: 27px;
 }
+
 p {
-  font-size: 17px;
-  line-height: 1.6;
-  color: #ddd;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #ddd;
 }
-.disabled {
-  display: block;
-  margin-top: 25px;
-  padding: 16px;
-  background: #444;
-  color: #aaa;
-  border: 1px solid #666;
-  border-radius: 8px;
-  text-decoration: line-through;
-  cursor: not-allowed;
-}
+
 .footer {
-  margin-top: 25px;
-  font-size: 12px;
-  color: #888;
+    margin-top: 25px;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Audio Player */
+
+.audio-player {
+    margin-top: 25px;
+    padding: 18px;
+    background: #1b1b1b;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+
+.audio-player button {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.audio-player button:hover {
+    background: #c62828;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.audio-controls input {
+    flex: 1;
+    cursor: pointer;
+    accent-color: #e53935;
+}
+
+.audio-time {
+    font-size: 12px;
+    color: #aaa;
+    min-width: 40px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.volume-control input {
+    width: 120px;
+    accent-color: #e53935;
+    cursor: pointer;
 }
 </style>
 </head>
+
 <body>
+
 <div class="warning">
-  <div class="symbol">⚠️</div>
-  <h1>SECURITY WARNING</h1>
-  <h1>This site is used by scammers to remotely control your device</h1>
-  <B>If you are on the phone with someone claiming they want access to your computer.</B>
-  <h1><b>HANG UP IMMEDIATELY</b></h1>
 
-  <p>
-   You are visiting a webpage that may
-    give people including scammers remote access to your computer, you should never give anyone remote access to your computer
-  </p>
+    <div class="symbol">⚠️</div>
 
-  <p>
-    For your safety, we have disabled these links
-    to help protect your computer and personal information.
-  </p>
+    <h1>SECURITY WARNING</h1>
 
-  
+    <h1>This site is used by scammers to remotely control your device</h1>
 
-  <div class="footer">
-    Rossland Computer Repair 250 231 0811
-  </div>
+    <b>If you are on the phone with someone claiming they want access to your computer.</b>
+
+    <h1><b>HANG UP IMMEDIATELY</b></h1>
+
+    <p>
+        You are visiting a webpage that may give people, including scammers,
+        remote access to your computer. You should never give anyone remote
+        access to your computer.
+    </p>
+
+    <p>
+        For your safety, we have disabled these links to help protect your
+        computer and personal information.
+    </p>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+
+        <button id="playPause">▶ Play Message from Rossland Computer Repair</button>
+
+        <div class="audio-controls">
+
+            <span class="audio-time" id="currentTime">0:00</span>
+
+            <input
+                type="range"
+                id="progress"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Audio progress"
+            >
+
+            <span class="audio-time" id="duration">0:00</span>
+
+        </div>
+
+        <div class="volume-control">
+
+            <span>🔊 Volume</span>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+                aria-label="Volume"
+            >
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Rossland Computer Repair 250 231 0811
+    </div>
+
 </div>
+
+<audio id="warningAudio" preload="auto">
+    <source
+        src="https://github.com/Vodkra/RCR/raw/refs/heads/main/alertmsg.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<script>
+
+const audio = document.getElementById("warningAudio");
+const playPause = document.getElementById("playPause");
+const progress = document.getElementById("progress");
+const volume = document.getElementById("volume");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+
+let isSeeking = false;
+
+// Format playback time
+function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return "0:00";
+
+    const minutes = Math.floor(seconds / 60);
+    const remaining = Math.floor(seconds % 60);
+
+    return minutes + ":" + String(remaining).padStart(2, "0");
+}
+
+// Play / Pause button
+playPause.addEventListener("click", function() {
+
+    if (audio.paused) {
+
+        audio.play().catch(error => {
+            console.log("Audio playback blocked:", error);
+        });
+
+    } else {
+
+        audio.pause();
+
+    }
+
+});
+
+// Update button
+audio.addEventListener("play", function() {
+    playPause.textContent = "⏸ Pause";
+});
+
+audio.addEventListener("pause", function() {
+    playPause.textContent = "▶ Play";
+});
+
+// Update progress
+audio.addEventListener("timeupdate", function() {
+
+    if (!isSeeking && Number.isFinite(audio.duration)) {
+        progress.value = (audio.currentTime / audio.duration) * 100;
+    }
+
+    currentTime.textContent = formatTime(audio.currentTime);
+
+});
+
+// Load duration
+audio.addEventListener("loadedmetadata", function() {
+    duration.textContent = formatTime(audio.duration);
+});
+
+// Seek audio
+progress.addEventListener("input", function() {
+
+    isSeeking = true;
+
+    if (Number.isFinite(audio.duration)) {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+    }
+
+});
+
+progress.addEventListener("change", function() {
+    isSeeking = false;
+});
+
+// Volume control
+volume.addEventListener("input", function() {
+    audio.volume = Number(volume.value);
+});
+
+// Simulate clicking Play after 3 seconds
+window.addEventListener("load", function() {
+
+    setTimeout(function() {
+
+        playPause.click();
+
+    }, 1000);
+
+});
+
+</script>
+
 </body>
 </html>
